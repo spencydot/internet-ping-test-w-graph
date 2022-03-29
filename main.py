@@ -1,20 +1,10 @@
-import pythonping
-import time 
-import os
-while True:
-    response_list = ping('8.8.8.8', size=40, count=1)
-    (int(response_list.rtt_avg_ms))
-    time.sleep(1)
-import random
+from pythonping import ping
 from itertools import count
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import time
-import os
-import pythonping
 
-plt.style.use('fivethirtyeight')
-
+plt.style.use('dark_background')
 x_values = []
 y_values = []
 
@@ -26,9 +16,9 @@ def animate(i):
     y_values.append(int(response_list.rtt_avg_ms))
     plt.cla()
     plt.plot(x_values, y_values)
+    time.sleep(1.5)
+    plt.xlabel(int(response_list.rtt_avg_ms), fontsize=16)
 
-ani = FuncAnimation(plt.gcf(), animate, 1000)
-
-time.sleep(1)
+ani = FuncAnimation(plt.gcf(), animate, 1000,)
 plt.tight_layout()
 plt.show()
